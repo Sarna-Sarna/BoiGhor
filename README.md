@@ -18,9 +18,9 @@ All reviews are automatically analyzed using an ML classifier (TF-IDF + Logistic
 The API returns a score (0–1) representing the probability of manipulation
 <br>
 **Automated Moderation Workflow**<br>
-Score ≥ 0.90 → Auto-Rejected (highly suspicious/fake)<br>
-0.60 ≤ Score < 0.90 → Flagged for Admin Review<br>
-Score < 0.60 → Auto-Approved
+Score ≥ 0.80 → Auto-Rejected (highly suspicious/fake)<br>
+0.50 ≤ Score < 0.80 → Flagged for Admin Review<br>
+Score < 0.50 → Auto-Approved
 <br>
 **Admin Notifications**<br>
 Admins receive instant alerts for every flagged/rejected comment<br>
