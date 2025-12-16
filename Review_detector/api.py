@@ -3,17 +3,12 @@ from pydantic import BaseModel
 import joblib
 import os
 
-# -----------------------------
-# 1. Resolve absolute paths
-# -----------------------------
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 VECTORIZER_PATH = os.path.join(BASE_DIR, "vectorizer.pkl")
 MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
 
-# -----------------------------
-# 2. Load model + vectorizer
-# -----------------------------
 try:
     vectorizer = joblib.load(VECTORIZER_PATH)
 except Exception as e:
@@ -24,9 +19,7 @@ try:
 except Exception as e:
     raise RuntimeError(f"Failed to load model from {MODEL_PATH}: {e}")
 
-# -----------------------------
-# 3. FastAPI app
-# -----------------------------
+
 app = FastAPI(title="Boighor Review Manipulation Detector")
 
 class ReviewInput(BaseModel):
