@@ -1,16 +1,16 @@
 <?php
-// admin/comments.php
+
 session_start();
 require_once '../config.php';
 
-// basic admin guard (adjust to your auth system)
+
 if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     die('Access denied. Admins only.');
 }
 
 $conn = db_connect();
 
-// handle actions
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = intval($_POST['id'] ?? 0);
     $action = $_POST['action'] ?? '';
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// fetch pending comments
+
 $stmt = $conn->prepare("SELECT id, book_id, username, email, comment, created_at FROM comments WHERE status = 'pending' ORDER BY created_at DESC");
 $stmt->execute();
 $res = $stmt->get_result();
