@@ -2,7 +2,7 @@
 include '../includes/db_connect.php';
 session_start();
 
-// Redirect if not admin
+
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin'){
     header("Location: ../auth/login.php");
     exit;
